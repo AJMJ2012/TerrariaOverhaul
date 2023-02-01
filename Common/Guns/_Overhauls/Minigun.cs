@@ -14,7 +14,7 @@ using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
 using TerrariaOverhaul.Core.Time;
 using TerrariaOverhaul.Utilities;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Guns;
 
 public class Minigun : ItemOverhaul
@@ -31,23 +31,7 @@ public class Minigun : ItemOverhaul
 	public virtual float DecelerationTime => 1f;
 
 	public override bool ShouldApplyItemOverhaul(Item item)
-	{
-		// Miniguns always use bullets.
-		if (item.useAmmo != AmmoID.Bullet) {
-			return false;
-		}
-
-		if (item.UseSound != SoundID.Item11 && item.UseSound != SoundID.Item40 && item.UseSound != SoundID.Item41) {
-			return false;
-		}
-
-		// Exclude slow firing guns.
-		if (item.useTime >= 10) {
-			return false;
-		}
-
-		return true;
-	}
+		=> GunChecks.MinigunCheck(item);
 
 	public override void SetDefaults(Item item)
 	{
@@ -87,7 +71,7 @@ public class Minigun : ItemOverhaul
 		base.HoldItem(item, player);
 
 		if (player.controlUseItem) {
-			speedFactor = MathUtils.StepTowards(speedFactor, 1f, AccelerationTime * TimeSystem.LogicDeltaTime);
+			speedFactor = MathUtils.StepTowards(speedFactor, 1.25f, AccelerationTime * TimeSystem.LogicDeltaTime);
 		} else {
 			speedFactor = MinSpeedFactor; //speedFactor = MathUtils.StepTowards(speedFactor, MinSpeedFactor, DecelerationTime * TimeSystem.LogicDeltaTime);
 		}

@@ -161,7 +161,7 @@ public sealed class ScreenShakeSystem : ModSystem
 			power = MathF.Max(power, intensity);
 		}
 
-		return MathHelper.Clamp(power * ScreenShakeStrength.Value, 0f, 1f);
+		return MathHelper.Clamp(power * ScreenShakeStrength.Value * 0.25f, 0f, 1f);
 	}
 
 	public static void New(float power, float time, Vector2? position = null, float range = ScreenShake.DefaultRange, string? uniqueId = null)

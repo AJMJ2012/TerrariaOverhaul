@@ -95,7 +95,7 @@ public partial class Broadsword : ItemOverhaul, IModifyItemNPCHitSound
 			item.EnableComponent<ItemMeleePowerAttackEffects>();
 			item.EnableComponent<ItemPowerAttacks>(c => {
 				c.ChargeLengthMultiplier = 1.5f;
-				c.CommonStatMultipliers.MeleeRangeMultiplier = 1.4f;
+				c.CommonStatMultipliers.MeleeRangeMultiplier = 1.5f;
 				c.CommonStatMultipliers.MeleeDamageMultiplier = c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.5f;
 				c.CommonStatMultipliers.MeleeKnockbackMultiplier = c.CommonStatMultipliers.ProjectileKnockbackMultiplier = 1.5f;
 				c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;

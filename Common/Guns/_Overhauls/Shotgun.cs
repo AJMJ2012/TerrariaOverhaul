@@ -29,12 +29,14 @@ public class Shotgun : ItemOverhaul
 	public int ShellCount { get; set; } = 1;
 
 	public override bool ShouldApplyItemOverhaul(Item item)
-		=> item.useAmmo == AmmoID.Bullet && (item.UseSound == SoundID.Item36 || item.UseSound == SoundID.Item38);
+		=> GunChecks.ShotgunCheck(item);
 
 	public override void SetDefaults(Item item)
 	{
-		item.UseSound = ShotgunFireSound;
-		PumpSound = ShotgunPumpSound;
+		if (item.UseSound == SoundID.Item36 || item.UseSound == SoundID.Item38) {
+			item.UseSound = ShotgunFireSound;
+			PumpSound = ShotgunPumpSound;
+		}
 
 		if (!Main.dedServ) {
 			item.EnableComponent<ItemAimRecoil>();
@@ -57,7 +59,7 @@ public class Shotgun : ItemOverhaul
 					ItemID.QuadBarrelShotgun => 4,
 					_ => 1,
 				};
-				c.SpawnOnUse = false;
+				c.SpawnOnUse = PumpSound == null;
 			});
 		}
 	}

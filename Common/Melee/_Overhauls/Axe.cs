@@ -76,17 +76,14 @@ public class Axe : ItemOverhaul
 		item.EnableComponent<ItemVelocityBasedDamage>();
 
 		// Animation
-		item.EnableComponent<QuickSlashMeleeAnimation>(c => {
-			c.FlipAttackEachSwing = true;
-			c.AnimateLegs = true;
-		});
+		item.EnableComponent<GenericMeleeAnimation>();
 
 		// Power Attacks
 		if (EnableAxePowerAttacks) {
 			item.EnableComponent<ItemMeleePowerAttackEffects>();
 			item.EnableComponent<ItemPowerAttacks>(c => {
 				c.ChargeLengthMultiplier = 1.5f;
-				c.CommonStatMultipliers.MeleeRangeMultiplier = 1.4f;
+				c.CommonStatMultipliers.MeleeRangeMultiplier = 1.5f;
 				c.CommonStatMultipliers.MeleeDamageMultiplier = c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.5f;
 				c.CommonStatMultipliers.MeleeKnockbackMultiplier = c.CommonStatMultipliers.ProjectileKnockbackMultiplier = 1.5f;
 				c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;

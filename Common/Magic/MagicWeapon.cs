@@ -10,7 +10,7 @@ using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
 using TerrariaOverhaul.Core.Time;
 using TerrariaOverhaul.Utilities;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Magic;
 
 public partial class MagicWeapon : ItemOverhaul
@@ -44,7 +44,7 @@ public partial class MagicWeapon : ItemOverhaul
 		}
 
 		// Ignore laser guns
-		if (item.UseSound == SoundID.Item157) {
+		if (item.UseSound == SoundID.Item12 || item.UseSound == SoundID.Item33 || item.UseSound == SoundID.Item157) {
 			return false;
 		}
 
@@ -55,15 +55,15 @@ public partial class MagicWeapon : ItemOverhaul
 	{
 		base.SetDefaults(item);
 
-		if (item.UseSound == SoundID.Item43) {
-			item.UseSound = MagicBlastSound;
-		}
+//		if (item.UseSound == SoundID.Item43) {
+//			item.UseSound = MagicBlastSound;
+//		}
 
 		item.EnableComponent<ItemPowerAttacks>(c => {
-			c.ChargeLengthMultiplier = 2f;
-			c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.75f;
+			c.ChargeLengthMultiplier = 1.5f;
+			c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.5f;
 			c.CommonStatMultipliers.ProjectileKnockbackMultiplier = 1.5f;
-			c.CommonStatMultipliers.ProjectileSpeedMultiplier = 2f;
+			c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;
 
 			c.OnChargeStart += (item, player, chargeLength) => {
 				if (Main.dedServ) {

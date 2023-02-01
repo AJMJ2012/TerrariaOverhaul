@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using TerrariaOverhaul.Core.Tags;
 using TerrariaOverhaul.Utilities;
 using Group = TerrariaOverhaul.Core.Tags.ProjectileTags;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Tags;
 
 public sealed class OverhaulProjectileTags : ILoadable
@@ -35,6 +35,16 @@ public sealed class OverhaulProjectileTags : ILoadable
 	/// <summary> Mostly used for extra visuals, like 'gore' pieces. </summary>
 	public static readonly TagData WoodenArrow = ContentTags.Get<Group>(nameof(WoodenArrow));
 
+	public static readonly TagData LaserBullet = ContentTags.Get<Group>(nameof(LaserBullet));
+	public static readonly TagData ExplosiveImpact = ContentTags.Get<Group>(nameof(ExplosiveImpact));
+	public static readonly TagData Explosions = ContentTags.Get<Group>(nameof(Explosions));
+	public static readonly TagData MagicExplosive = ContentTags.Get<Group>(nameof(MagicExplosive));
+	public static readonly TagData MagicExplosiveImpact = ContentTags.Get<Group>(nameof(MagicExplosiveImpact));
+	public static readonly TagData MagicExplosions = ContentTags.Get<Group>(nameof(MagicExplosions));
+	public static readonly TagData ElectricExplosive = ContentTags.Get<Group>(nameof(ElectricExplosive));
+	public static readonly TagData ElectricExplosiveImpact = ContentTags.Get<Group>(nameof(ElectricExplosiveImpact));
+	public static readonly TagData ElectricExplosions = ContentTags.Get<Group>(nameof(ElectricExplosions));
+	public static bool AnyExplosive(int type) => Explosive.Has(type) || Explosions.Has(type) || MagicExplosive.Has(type) || MagicExplosiveImpact.Has(type) || MagicExplosions.Has(type) || ElectricExplosive.Has(type) || ElectricExplosiveImpact.Has(type) || ElectricExplosions.Has(type);
 	void ILoadable.Load(Mod mod)
 	{
 		Incendiary.SetMultiple(
@@ -164,7 +174,108 @@ public sealed class OverhaulProjectileTags : ILoadable
 			ProjectileID.Meteor2,
 			ProjectileID.Meteor3,
 			ProjectileID.ExplosiveBullet,
-			ProjectileID.FallingStar
+			// DA Additions
+			ProjectileID.ApprenticeStaffT3Shot,
+			ProjectileID.Beenade,
+			ProjectileID.BombSkeletronPrime,
+			ProjectileID.CannonballFriendly,
+			ProjectileID.CannonballHostile,
+			ProjectileID.Celeb2Rocket,
+			ProjectileID.Celeb2RocketExplosive,
+			ProjectileID.Celeb2RocketExplosiveLarge,
+			ProjectileID.Celeb2RocketLarge,
+			ProjectileID.ClusterFragmentsI,
+			ProjectileID.ClusterFragmentsII,
+			ProjectileID.ClusterGrenadeI,
+			ProjectileID.ClusterGrenadeII,
+			ProjectileID.ClusterMineI,
+			ProjectileID.ClusterMineII,
+			ProjectileID.ClusterRocketI,
+			ProjectileID.ClusterRocketII,
+			ProjectileID.ClusterSnowmanRocketI,
+			ProjectileID.ClusterSnowmanRocketII,
+			ProjectileID.CultistBossFireBallClone,
+			ProjectileID.DD2BetsyArrow,
+			ProjectileID.DryGrenade,
+			ProjectileID.DryMine,
+			ProjectileID.DryRocket,
+			ProjectileID.DrySnowmanRocket,
+			ProjectileID.ElectrosphereMissile,
+			ProjectileID.Fireball,
+			ProjectileID.HoneyGrenade,
+			ProjectileID.HoneyMine,
+			ProjectileID.HoneyRocket,
+			ProjectileID.HoneySnowmanRocket,
+			ProjectileID.JackOLantern,
+			ProjectileID.LavaGrenade,
+			ProjectileID.LavaMine,
+			ProjectileID.LavaRocket,
+			ProjectileID.LavaSnowmanRocket,
+			ProjectileID.MiniNukeGrenadeI,
+			ProjectileID.MiniNukeGrenadeII,
+			ProjectileID.MiniNukeMineI,
+			ProjectileID.MiniNukeMineII,
+			ProjectileID.MiniNukeRocketI,
+			ProjectileID.MiniNukeRocketII,
+			ProjectileID.MiniNukeSnowmanRocketI,
+			ProjectileID.MiniNukeSnowmanRocketII,
+			ProjectileID.Nail,
+			ProjectileID.RocketFireworkBlue,
+			ProjectileID.RocketFireworkGreen,
+			ProjectileID.RocketFireworkRed,
+			ProjectileID.RocketFireworkYellow,
+			ProjectileID.RocketSkeleton,
+			ProjectileID.RocketSnowmanI,
+			ProjectileID.RocketSnowmanII,
+			ProjectileID.RocketSnowmanIII,
+			ProjectileID.RocketSnowmanIV,
+			ProjectileID.SantankMountRocket,
+			ProjectileID.StarCannonStar,
+			ProjectileID.Stynger,
+			ProjectileID.StyngerShrapnel,
+			ProjectileID.VortexBeaterRocket,
+			ProjectileID.WetGrenade,
+			ProjectileID.WetSnowmanRocket
+		);
+
+		Explosions.SetMultiple(
+			ProjectileID.DD2ExplosiveTrapT1Explosion,
+			ProjectileID.DD2ExplosiveTrapT2Explosion,
+			ProjectileID.DD2ExplosiveTrapT3Explosion,
+			ProjectileID.DaybreakExplosion,
+			ProjectileID.SolarWhipSwordExplosion
+		);
+
+		// Magical explosions. Not physical or fire magic type explosions.
+		MagicExplosive.SetMultiple(
+			ProjectileID.DesertDjinnCurse,
+			ProjectileID.FallingStar,
+			ProjectileID.HallowStar,
+			ProjectileID.NebulaArcanum,
+			ProjectileID.NebulaBlaze1,
+			ProjectileID.NebulaBlaze2,
+			ProjectileID.SpiritFlame,
+			ProjectileID.StarWrath,
+			ProjectileID.SuperStar
+		);
+
+		MagicExplosiveImpact.SetMultiple(
+			ProjectileID.LunarFlare
+		);
+
+		MagicExplosions.SetMultiple(
+			ProjectileID.NebulaArcanumExplosionShot,
+			ProjectileID.StardustGuardianExplosion,
+			ProjectileID.RainbowCrystalExplosion
+		);
+
+		// Electrical explosions.
+		ElectricExplosive.SetMultiple();
+
+		ElectricExplosiveImpact.SetMultiple();
+
+		ElectricExplosions.SetMultiple(
+			ProjectileID.Electrosphere
 		);
 
 		Bullet.SetMultiple(
@@ -190,7 +301,32 @@ public sealed class OverhaulProjectileTags : ILoadable
 			ProjectileID.RocketI,
 			ProjectileID.RocketII,
 			ProjectileID.RocketIII,
-			ProjectileID.RocketIV
+			ProjectileID.RocketIV,
+			// DA Additions
+			ProjectileID.ClusterRocketI,
+			ProjectileID.ClusterRocketII,
+			ProjectileID.ClusterSnowmanRocketI,
+			ProjectileID.ClusterSnowmanRocketII,
+			ProjectileID.DryRocket,
+			ProjectileID.DrySnowmanRocket,
+			ProjectileID.HoneyRocket,
+			ProjectileID.HoneySnowmanRocket,
+			ProjectileID.LavaRocket,
+			ProjectileID.LavaSnowmanRocket,
+			ProjectileID.MiniNukeRocketI,
+			ProjectileID.MiniNukeRocketII,
+			ProjectileID.MiniNukeSnowmanRocketI,
+			ProjectileID.MiniNukeSnowmanRocketII,
+			ProjectileID.RocketSkeleton,
+			ProjectileID.RocketSnowmanI,
+			ProjectileID.RocketSnowmanII,
+			ProjectileID.RocketSnowmanIII,
+			ProjectileID.RocketSnowmanIV,
+			ProjectileID.SantankMountRocket,
+			ProjectileID.Stynger,
+			ProjectileID.VortexBeaterRocket,
+			ProjectileID.WetRocket,
+			ProjectileID.WetSnowmanRocket
 		);
 
 		Grenade.SetMultiple(
@@ -200,13 +336,59 @@ public sealed class OverhaulProjectileTags : ILoadable
 			ProjectileID.GrenadeI,
 			ProjectileID.GrenadeII,
 			ProjectileID.GrenadeIII,
-			ProjectileID.GrenadeIV
+			ProjectileID.GrenadeIV,
+			// DA Additions
+			ProjectileID.ClusterFragmentsI,
+			ProjectileID.ClusterFragmentsII,
+			ProjectileID.ClusterGrenadeI,
+			ProjectileID.ClusterGrenadeII,
+			ProjectileID.ClusterMineI,
+			ProjectileID.ClusterMineII,
+			ProjectileID.DryGrenade,
+			ProjectileID.DryMine,
+			ProjectileID.HoneyGrenade,
+			ProjectileID.HoneyMine,
+			ProjectileID.JackOLantern,
+			ProjectileID.LavaGrenade,
+			ProjectileID.LavaMine,
+			ProjectileID.MiniNukeGrenadeI,
+			ProjectileID.MiniNukeGrenadeII,
+			ProjectileID.MiniNukeMineI,
+			ProjectileID.MiniNukeMineII,
+			ProjectileID.StyngerShrapnel,
+			ProjectileID.WetGrenade,
+			ProjectileID.WetMine
 		);
 
 		WoodenArrow.SetMultiple(
 			ProjectileID.WoodenArrowFriendly,
 			ProjectileID.WoodenArrowHostile,
 			ProjectileID.FireArrow
+		);
+
+		LaserBullet.SetMultiple(
+			ProjectileID.DeathLaser,
+			ProjectileID.EyeBeam,
+			ProjectileID.EyeLaser,
+			ProjectileID.FrostBeam,
+			ProjectileID.GreenLaser,
+			ProjectileID.HeatRay,
+			ProjectileID.LaserMachinegunLaser,
+			ProjectileID.MartianWalkerLaser,
+			ProjectileID.MinecartMechLaser,
+			ProjectileID.MiniRetinaLaser,
+			ProjectileID.NebulaLaser,
+			ProjectileID.PinkLaser,
+			ProjectileID.PurpleLaser,
+			ProjectileID.RayGunnerLaser,
+			ProjectileID.SaucerLaser,
+			ProjectileID.ScutlixLaser,
+			ProjectileID.ScutlixLaserFriendly,
+			ProjectileID.ShadowBeamFriendly,
+			ProjectileID.ShadowBeamHostile,
+			ProjectileID.UFOLaser,
+			ProjectileID.VortexLaser,
+			ProjectileID.ZapinatorLaser
 		);
 	}
 	void ILoadable.Unload() { }

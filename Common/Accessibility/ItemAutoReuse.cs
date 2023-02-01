@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using TerrariaOverhaul.Core.Configuration;
 
@@ -20,6 +21,14 @@ public class ItemAutoReuse : GlobalItem
 
 		//TODO: Implement through APIs instead.
 		if (item.ModItem?.Mod is { Name: "ClickerClass" }) {
+			return;
+		}
+
+		if (item.CountsAsClass(DamageClass.Ranged) && item.useAmmo == AmmoID.Bullet) {
+			return;
+		}
+
+		if (item.fishingPole > 0) {
 			return;
 		}
 

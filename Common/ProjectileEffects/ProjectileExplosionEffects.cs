@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TerrariaOverhaul.Common.BloodAndGore;
@@ -23,6 +24,8 @@ public sealed class ProjectileExplosionEffects : GlobalProjectile
 
 	public override bool InstancePerEntity => true;
 
+	bool appliedExplosion = false;
+
 	public override void SetDefaults(Projectile projectile)
 	{
 		if (OverhaulProjectileTags.Bullet.Has(projectile.type)) {
@@ -31,7 +34,7 @@ public sealed class ProjectileExplosionEffects : GlobalProjectile
 			MinPower = 25f;
 		}
 
-		if (OverhaulProjectileTags.Explosive.Has(projectile.type)) {
+		if (OverhaulProjectileTags.AnyExplosive(projectile.type)) {
 			Enabled = true;
 			AffectsGameplayEntities = true;
 			SetsGoreOnFire = true;
@@ -51,8 +54,34 @@ public sealed class ProjectileExplosionEffects : GlobalProjectile
 		return true;
 	}
 
+	public override void OnSpawn(Projectile projectile, IEntitySource source)
+	{
+		if (OverhaulProjectileTags.Explosions.Has(projectile.type) || OverhaulProjectileTags.MagicExplosions.Has(projectile.type)) {
+			ImproveExplosion(projectile);
+		}
+	}
+	public override  bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+	{
+		if (OverhaulProjectileTags.ExplosiveImpact.Has(projectile.type) || OverhaulProjectileTags.MagicExplosiveImpact.Has(projectile.type)) {
+			ImproveExplosion(projectile);
+		}
+		return true;
+	}
+
 	public override void Kill(Projectile projectile, int timeLeft)
 	{
+		if (OverhaulProjectileTags.Explosive.Has(projectile.type) || OverhaulProjectileTags.MagicExplosive.Has(projectile.type)) {
+			bool types = projectile.type == ProjectileID.SpiritFlame || projectile.type == ProjectileID.DesertDjinnCurse;
+			if ((types && timeLeft > 0) || !types) {
+				ImproveExplosion(projectile);
+			}
+		}
+	}
+
+	public void ImproveExplosion(Projectile projectile)
+	{
+		if (appliedExplosion) return;
+		appliedExplosion = true;
 		if (!Enabled) {
 			return;
 		}

@@ -8,7 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.UI;
 using TerrariaOverhaul.Core.Time;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Crosshairs;
 
 [Autoload(Side = ModSide.Client)]
@@ -23,7 +23,7 @@ public sealed class CrosshairSystem : ModSystem
 
 	public static bool ShowCrosshair {
 		get {
-			if (Main.dedServ || Main.gameMenu) {
+			if (Main.dedServ || Main.gameMenu || Main.SmartCursorIsUsed || Main.mouseText) {
 				return false;
 			}
 
@@ -64,6 +64,9 @@ public sealed class CrosshairSystem : ModSystem
 		float totalOffset = 0f;
 		float totalRot = 0f;
 		Color color = Main.cursorColor;
+		if (Main.LocalPlayer.hasRainbowCursor) {
+			color = Main.hslToRgb(Main.GlobalTimeWrappedHourly * 0.25f % 1f, 1f, 0.5f);
+		}
 
 		for (int i = 0; i < impulses.Count; i++) {
 			var impulse = impulses[i];

@@ -1,14 +1,12 @@
 ﻿using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
 using TerrariaOverhaul.Common.Camera;
 using TerrariaOverhaul.Common.Crosshairs;
 using TerrariaOverhaul.Common.Items;
 using TerrariaOverhaul.Common.Recoil;
-using TerrariaOverhaul.Common.Tags;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Guns;
 
 public class GrenadeLauncher : ItemOverhaul
@@ -19,21 +17,7 @@ public class GrenadeLauncher : ItemOverhaul
 	};
 
 	public override bool ShouldApplyItemOverhaul(Item item)
-	{
-		if (item.useAmmo != AmmoID.Rocket) {
-			return false;
-		}
-
-		if (!ContentSamples.ProjectilesByType.TryGetValue(item.shoot, out var proj)) {
-			return false;
-		}
-
-		if (proj.aiStyle != ProjAIStyleID.Explosive || OverhaulProjectileTags.Rocket.Has(proj.type)) {
-			return false;
-		}
-
-		return true;
-	}
+		=> GunChecks.GrenadeLauncherCheck(item);
 
 	public override void SetDefaults(Item item)
 	{
@@ -51,7 +35,7 @@ public class GrenadeLauncher : ItemOverhaul
 			});
 
 			item.EnableComponent<ItemUseScreenShake>(c => {
-				c.ScreenShake = new ScreenShake(8f, 0.4f);
+				c.ScreenShake = new ScreenShake(0.6f, 0.25f);
 			});
 		}
 	}

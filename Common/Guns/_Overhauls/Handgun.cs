@@ -9,7 +9,7 @@ using TerrariaOverhaul.Common.Recoil;
 using TerrariaOverhaul.Content.Gores;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Guns;
 
 public class Handgun : ItemOverhaul
@@ -20,17 +20,7 @@ public class Handgun : ItemOverhaul
 	};
 
 	public override bool ShouldApplyItemOverhaul(Item item)
-	{
-		if (item.useAmmo != AmmoID.Bullet) {
-			return false;
-		}
-
-		if ((item.UseSound != SoundID.Item41 || item.useTime < 6) && (item.UseSound != SoundID.Item11 || item.useTime < 10)) {
-			return false;
-		}
-
-		return true;
-	}
+		=> GunChecks.HandgunCheck(item);
 
 	public override void SetDefaults(Item item)
 	{

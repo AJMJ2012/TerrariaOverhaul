@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Utilities;
-
+// DA Fix
 namespace TerrariaOverhaul.Common.Recoil;
 
 // Very experimental feature.
@@ -16,7 +16,7 @@ public sealed class ItemAimRecoil : ItemComponent
 
 	public override bool? UseItem(Item item, Player player)
 	{
-		if (Enabled) {
+		if (Enabled && player.whoAmI == Main.myPlayer) {
 			ApplyRecoil(item, player);
 		}
 

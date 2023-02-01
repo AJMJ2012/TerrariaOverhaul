@@ -18,6 +18,8 @@ public sealed class PlayerHoldOutAnimation : ModPlayer
 	private float directItemRotation;
 	private float directTargetItemRotation;
 
+	private bool WeaponOut => ModLoader.HasMod("WeaponOut") || ModLoader.HasMod("WeaponOutLite");
+
 	public float VisualRecoil { get; set; }
 
 	public override void Load()
@@ -52,7 +54,7 @@ public sealed class PlayerHoldOutAnimation : ModPlayer
 		};
 
 		On.Terraria.Player.PlayerFrame += (orig, player) => {
-			if (ShouldForceUseAnim(player.HeldItem) && player.itemAnimation <= 0 && AlwaysShowAimableWeapons) {
+			if (ShouldForceUseAnim(player.HeldItem) && player.itemAnimation <= 0 && AlwaysShowAimableWeapons && !WeaponOut) {
 				InvokeWithForcedAnimation(player, () => orig(player));
 				return;
 			}
@@ -63,7 +65,7 @@ public sealed class PlayerHoldOutAnimation : ModPlayer
 		On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_27_HeldItem += (On.Terraria.DataStructures.PlayerDrawLayers.orig_DrawPlayer_27_HeldItem orig, ref PlayerDrawSet drawInfo) => {
 			var player = drawInfo.drawPlayer;
 
-			if (ShouldForceUseAnim(player.HeldItem) && player.itemAnimation <= 0 && AlwaysShowAimableWeapons) {
+			if (ShouldForceUseAnim(player.HeldItem) && player.itemAnimation <= 0 && AlwaysShowAimableWeapons && !WeaponOut) {
 				ForceAnim(player, out int itemAnim, out int itemAnimMax);
 
 				orig(ref drawInfo);

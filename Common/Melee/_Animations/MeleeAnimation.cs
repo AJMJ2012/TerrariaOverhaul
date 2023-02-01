@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ModLoader;
 using TerrariaOverhaul.Core.Debugging;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Utilities;
@@ -18,7 +19,7 @@ public abstract class MeleeAnimation : ItemComponent
 
 	public override void UseItemFrame(Item item, Player player)
 	{
-		if (!Enabled || !EnableImprovedMeleeAnimations) {
+		if (!Enabled || !EnableImprovedMeleeAnimations || ModLoader.HasMod("MeleeWeaponEffects") || ModLoader.HasMod("WeaponDisplay")) {
 			return;
 		}
 

@@ -19,21 +19,7 @@ public class RocketLauncher : ItemOverhaul
 	};
 
 	public override bool ShouldApplyItemOverhaul(Item item)
-	{
-		if (item.useAmmo != AmmoID.Rocket) {
-			return false;
-		}
-
-		if (!ContentSamples.ProjectilesByType.TryGetValue(item.shoot, out var proj)) {
-			return false;
-		}
-
-		if (proj.aiStyle != ProjAIStyleID.Explosive || OverhaulProjectileTags.Grenade.Has(proj.type)) {
-			return false;
-		}
-
-		return true;
-	}
+		=> GunChecks.RocketLauncherCheck(item);
 
 	public override void SetDefaults(Item item)
 	{

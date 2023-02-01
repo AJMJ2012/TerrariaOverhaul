@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 using TerrariaOverhaul.Core.Localization;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.MainMenuOverlays;
 
 [Autoload(Side = ModSide.Client)]
@@ -50,6 +50,9 @@ public sealed class MainMenuOverlaySystem : ModSystem
 		menuLines = new List<MenuLine> {
 			// Version info
 			new MenuLine(Text.Literal($"Terraria Overhaul v{OverhaulMod.Instance.Version} {OverhaulMod.VersionSuffix}")),
+
+			// Edit info
+			new MenuLine(Text.Literal($"Edited by Dark Assassin")),
 
 			// Patreon button
 			new PatreonMenuLink(Text.Literal("patreon.com/Mirsario"), @"https://patreon.com/Mirsario") {

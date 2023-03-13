@@ -21,7 +21,7 @@ public class ProjectileLaserHitSound : GlobalProjectile
 	public override void OnSpawn(Projectile projectile, IEntitySource source)
 	{
 		LaserGun? info = null;
-		(source as EntitySource_ItemUse)?.Item.TryGetGlobalItem<LaserGun>(out info); // Why can't I just out var info? Keeps complaining about it being unassigned.
+		(source as EntitySource_ItemUse)?.Item.TryGetGlobalItem<LaserGun>(out info);
 		appliesToEntity = (info?.overhaulApplied ?? false) || OverhaulProjectileTags.LaserBullet.Has(projectile.type);
 	}
 

@@ -55,8 +55,13 @@ public sealed class MainMenuOverlaySystem : ModSystem
 			new MenuLine(Text.Literal($"Edited by Dark Assassin")),
 
 			// Patreon button
-			new PatreonMenuLink(Text.Literal("patreon.com/Mirsario"), @"https://patreon.com/Mirsario") {
+			new PatreonMenuLink(Text.Localized($"{MenuKey}.Patreon"), @"https://patreon.com/Mirsario") {
 				ForcedColor = isHovered => Color.Lerp(Color.White, Main.DiscoColor, isHovered ? 0.5f : 0.75f)
+			},
+
+			// DA Ko-Fi button
+			new MenuLink(Text.Localized($"{MenuKey}.DAKoFi"), @"https://ko-fi.com/AJMJ2012") {
+				ForcedColor = isHovered => Color.Lerp(Color.White, new Color(255, (byte)(Main.masterColor * 200f), 0, 255), isHovered ? 0.5f : 0.75f)
 			},
 			
 			// Configuration button
@@ -69,7 +74,7 @@ public sealed class MainMenuOverlaySystem : ModSystem
 			},
 			
 			// Discord server
-			new MenuLink(Text.Localized($"{MenuKey}.DiscordServer"), @"https://discord.gg/RNGq9N8"),
+			new MenuLink(Text.Literal("Mirsario's Discord"), @"https://discord.gg/RNGq9N8"),
 
 			// Forum page -- Hidden for now.
 			//new MenuLink(Text.Localized($"{MenuKey}.ForumPage"), @"https://forums.terraria.org/index.php?threads/60369"),
@@ -79,6 +84,9 @@ public sealed class MainMenuOverlaySystem : ModSystem
 
 			// Github page
 			new MenuLink(Text.Localized($"{MenuKey}.Github"), @"https://github.com/Mirsario/TerrariaOverhaul"),
+
+			// DA Github page
+			new MenuLink(Text.Localized($"{MenuKey}.DAGithub"), @"https://github.com/AJMJ2012/TerrariaOverhaul"),
 		};
 	}
 

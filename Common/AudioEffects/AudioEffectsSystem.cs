@@ -89,6 +89,11 @@ public class AudioEffectsSystem : ModSystem
 
 		WorldGen.Hooks.OnWorldLoad += TryAnnounceErrorMessage;
 
+		if (ModLoader.HasMod("TerrariaAmbience")) {
+			DebugSystem.Log($"Audio effects disabled: 'TerrariaAmbience' is loaded.");
+			return;
+		}
+
 		if (!EnableAudioFiltering) {
 			DebugSystem.Log($"Audio effects disabled: '{EnableAudioFiltering.Category}.{EnableAudioFiltering.Name}' is 'false'.");
 			return;

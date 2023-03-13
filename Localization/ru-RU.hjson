@@ -16,7 +16,10 @@ Mods: {
 			DiscordServer: "Сервер Discord"
 			ForumPage: "Форум"
 			WikiPage: "Overhaul Вики"
-			Github: "GitHub"
+			Patreon: "Patreon Mirsario"
+			Github: "GitHub Mirsario"
+			DAKoFi: "Ko-Fi Dark-Assassin"
+			DAGithub: "GitHub Dark-Assassin"
 
 			MusicPack: {
 				Get: "Получить комплект музыки"

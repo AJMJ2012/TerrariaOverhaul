@@ -20,7 +20,7 @@ public abstract class AmbienceTrack : ModType
 	public float VolumeChangeSpeed { get; protected set; } = 0.5f;
 	public float Volume { get; private set; }
 
-	private bool ShouldBeActive => Volume > 0f && AmbienceSystem.EnableAmbientSounds;
+	private bool ShouldBeActive => Volume > 0f && AmbienceSystem.EnableAmbientSounds && !ModLoader.HasMod("TerrariaAmbience");
 
 	public SoundStyle Sound {
 		get => sound;

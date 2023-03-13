@@ -16,7 +16,10 @@ Mods: {
 			DiscordServer: "Discordserver"
 			ForumPage: "Forumsseite"
 			WikiPage: "Overhaul Wiki"
-			Github: "GitHub"
+			Patreon: "Mirsario's Patreon"
+			Github: "Mirsario's GitHub"
+			DAKoFi: "Dark-Assassin's Ko-Fi"
+			DAGithub: "Dark-Assassin's GitHub"
 
 			MusicPack: {
 				Get: "Hol dir das Musikpaket"

@@ -16,7 +16,10 @@ Mods: {
 			DiscordServer: "Discord 服务器"
 			ForumPage: "官方论坛页面"
 			WikiPage: "Overhaul Wiki"
-			Github: "GitHub"
+			Patreon: "Mirsario 的 Patreon"
+			Github: "Mirsario 的 GitHub"
+			DAKoFi: "Dark-Assassin 的 Ko-Fi"
+			DAGithub: "Dark-Assassin 的 GitHub"
 
 			MusicPack: {
 				Get: "获取音乐包"

@@ -16,7 +16,7 @@ public class LaserGun : ItemOverhaul
 {
 	public bool overhaulApplied = false;
 
-	public static readonly SoundStyle LaserGunFireSound = new($"{nameof(TerrariaOverhaul)}/Assets/DA/Sounds/Items/LaserGun/laser_small") {
+	public static readonly SoundStyle FireSound = new($"{nameof(TerrariaOverhaul)}/Assets/DA/Sounds/Items/LaserGun/laser_small") {
 		Volume = 0.3f,
 		PitchVariance = 0.2f,
 	};
@@ -28,23 +28,13 @@ public class LaserGun : ItemOverhaul
 	{
 		base.SetDefaults(item);
 
-		item.UseSound = LaserGunFireSound;
+		item.UseSound = FireSound;
 
 		overhaulApplied = true;
 
 		if (!Main.dedServ) {
 			item.EnableComponent<ItemAimRecoil>();
-			item.EnableComponent<ItemMuzzleflashes>();
-			item.EnableComponent<ItemCrosshairController>();
 			item.EnableComponent<ItemPlaySoundOnEveryUse>();
-
-			item.EnableComponent<ItemUseVisualRecoil>(c => {
-				c.Power = 10f;
-			});
-
-			item.EnableComponent<ItemUseScreenShake>(c => {
-				c.ScreenShake = new ScreenShake(0.3f, 0.2f);
-			});
 		}
 	}
 }

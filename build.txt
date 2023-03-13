@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-﻿author = Mirsario, Dark Assassin
+author = Mirsario, Dark Assassin
 version = 5.0.0.26
 displayName = Terraria Overhaul (v5.0 BETA 12B) [DA Edit]
-=======
-﻿author = Mirsario
-version = 5.0.0.28
-displayName = Terraria Overhaul (v5.0 BETA 12C)
->>>>>>> f804c3dffe7a9db0654285646d5e1bb1112da267
 homepage = https://github.com/Mirsario/TerrariaOverhaul
 hideCode = false
 hideResources = false

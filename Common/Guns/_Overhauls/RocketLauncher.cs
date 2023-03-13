@@ -8,7 +8,8 @@ using TerrariaOverhaul.Common.Recoil;
 using TerrariaOverhaul.Common.Tags;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
-
+using TerrariaOverhaul.Utilities;
+// DA Edit
 namespace TerrariaOverhaul.Common.Guns;
 
 public class RocketLauncher : ItemOverhaul
@@ -29,16 +30,6 @@ public class RocketLauncher : ItemOverhaul
 
 		if (!Main.dedServ) {
 			item.EnableComponent<ItemAimRecoil>();
-			item.EnableComponent<ItemMuzzleflashes>();
-			item.EnableComponent<ItemCrosshairController>();
-
-			item.EnableComponent<ItemUseVisualRecoil>(c => {
-				c.Power = 6f;
-			});
-
-			item.EnableComponent<ItemUseScreenShake>(c => {
-				c.ScreenShake = new ScreenShake(0.6f, 0.25f);
-			});
 		}
 	}
 }

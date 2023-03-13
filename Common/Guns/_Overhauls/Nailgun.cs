@@ -30,17 +30,7 @@ public class Nailgun : ItemOverhaul
 
 		if (!Main.dedServ) {
 			item.EnableComponent<ItemAimRecoil>();
-			item.EnableComponent<ItemMuzzleflashes>();
-			item.EnableComponent<ItemCrosshairController>();
 			item.EnableComponent<ItemPlaySoundOnEveryUse>();
-
-			item.EnableComponent<ItemUseVisualRecoil>(c => {
-				c.Power = 10f;
-			});
-
-			item.EnableComponent<ItemUseScreenShake>(c => {
-				c.ScreenShake = new ScreenShake(0.45f, 0.2f);
-			});
 		}
 	}
 }

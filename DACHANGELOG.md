@@ -81,8 +81,6 @@
 * Added throwing weapon overhaul (Thrown.cs)
 	* Throwing weapons have power attacks
 	* Spiky Balls, Grenades, and similar will not have increased knockback and damage from power attacks
-* Added generic weapon overhaul (ZGenericWeapon.cs)
-	* This is just to show the combat crosshair for all other weapons
 * Gun Checks (GunChecks.cs)
 	* Contains all the checks for guns
 	* Various weapons have had their checks modified to fit a better range of items and reduce conflicts

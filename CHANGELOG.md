@@ -29,7 +29,17 @@
 
 # Work In Progress
 
-* Nothing yet *
+### Additions
+- Multiple features have been decoupled from "Item Overhauls", and will now appear on all fitting items in the game (including other mods' content), instead of only applying to thought-ahead categories of items ("shotguns", "bows", etc.):
+	- Crosshairs - The aiming reticle, but a great feedback booster more importantly.
+	- Visual Recoil - The slight offset in weapon's rotation after it's used.
+	- Muzzleflashes - The weapons' fire breath.
+	- Screen-shake - Self-explanatory.
+- Weapon muzzleflashes are now automatically colored based on the shot projectile (or used ammunition).
+- Added two new alternated muzzleflash variations, and two frames of animation.
+
+### Fixes
+- Fixed vanilla mining helmet light not appearing if `PlayerVisuals.EnableAimableFlashlights` is disabled.
 
 ### Fixes
 - Fixed vanilla mining helmet light not appearing if `PlayerVisuals.EnableAimableFlashlights` is disabled.
@@ -41,7 +51,7 @@
 - Improved coloring of melee damage text and the Hack and Slash passive: removed green shades since people thought that they were sometimes healing enemies, widened white shades' range.
 - Fast-firing bows' audio will now stack instead of being abruptly reset all the time.
 - Slightly slowed down Mana Absorption passive's icon pulse rate.
-- Optimized decal addition code to perfection, minimized reallocations and GC stress.
+- Crosshairs will now take "re-use delay" into account for their rotations.
 
 ### Fixes
 - Fixed another typo in Journey mode scaling fixes, this time resulting in lowest stats being used when Master difficulty values are selected in Journey mode's customization.
@@ -51,6 +61,10 @@
 - Prevented a seemingly impossible concurrency error in decal code from ever happening. This game has no concurrency, and yet this was reported.
 - Fixed a rare `IndexOutOfRangeException` that could occur when dodgerolling while on a grappling hook.
 - Fixed many screenshakes being global (positionless) in multiplayer.
+
+### Optimizations
+- Optimized decal addition code to perfection, minimized reallocations and GC stress.
+- Crosshair impulse registration no longer causes any heap allocations.
 
 ### Configuration
 - Added `Melee.EnableSwingVelocity` option.

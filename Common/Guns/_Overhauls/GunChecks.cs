@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using TerrariaOverhaul.Common.Tags;
+using TerrariaOverhaul.Utilities;
 // DA Creation
 namespace TerrariaOverhaul.Common.Guns;
 
@@ -110,7 +111,7 @@ public static class GunChecks {
 	
 
 	public static bool GrenadeLauncherCheck(Item item) {
-		if (!ContentSamples.ProjectilesByType.TryGetValue(item.shoot, out var proj)) {
+		if (!ContentSampleUtils.TryGetProjectile(item.shoot, out var proj)) {
 			return false;
 		}
 
@@ -122,7 +123,7 @@ public static class GunChecks {
 	}
 
 	public static bool RocketLauncherCheck(Item item) {
-		if (!ContentSamples.ProjectilesByType.TryGetValue(item.shoot, out var proj)) {
+		if (!ContentSampleUtils.TryGetProjectile(item.shoot, out var proj)) {
 			return false;
 		}
 
@@ -134,5 +135,5 @@ public static class GunChecks {
 	}
 
 
-	public static bool LaserGunCheck(Item item) => item.UseSound == SoundID.Item12 || item.UseSound == SoundID.Item33 || item.UseSound == SoundID.Item75 || item.UseSound == SoundID.Item157;
+	public static bool LaserGunCheck(Item item) => item.UseSound == SoundID.Item12 || item.UseSound == SoundID.Item33 || item.UseSound == SoundID.Item75 || item.UseSound == SoundID.Item157 || item.UseSound == SoundID.Item158;
 }

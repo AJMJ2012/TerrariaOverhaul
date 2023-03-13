@@ -39,15 +39,6 @@ namespace TerrariaOverhaul.Common.Crossbow
 
 			if (!Main.dedServ) {
 				item.EnableComponent<ItemAimRecoil>();
-				item.EnableComponent<ItemCrosshairController>();
-
-				item.EnableComponent<ItemUseVisualRecoil>(c => {
-					c.Power = 5f;
-				});
-
-				item.EnableComponent<ItemUseScreenShake>(c => {
-					c.ScreenShake = new ScreenShake(2f, 0.2f);
-				});
 			}
 		}
 

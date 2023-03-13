@@ -11,17 +11,17 @@ namespace TerrariaOverhaul.Common.ModEntities.Items.Overhauls;
 
 public partial class Bow : ItemOverhaul
 {
-	public static readonly SoundStyle BowFireSound = new($"{nameof(TerrariaOverhaul)}/Assets/DA/Sounds/Items/Bows/BowFire") {
+	public static readonly SoundStyle FireSound = new($"{nameof(TerrariaOverhaul)}/Assets/DA/Sounds/Items/Bows/BowFire") {
 		Volume = 0.375f,
 		PitchVariance = 0.2f,
 		MaxInstances = 3,
 	};
-	public static readonly SoundStyle BowChargeSound = new($"{nameof(TerrariaOverhaul)}/Assets/DA/Sounds/Items/Bows/BowPull") {
+	public static readonly SoundStyle ChargeSound = new($"{nameof(TerrariaOverhaul)}/Assets/DA/Sounds/Items/Bows/BowPull") {
 		Volume = 0.375f,
 		PitchVariance = 0.2f,
 		MaxInstances = 3,
 	};
-	public static readonly SoundStyle BowEmptySound = new($"{nameof(TerrariaOverhaul)}/Assets/Sounds/Items/Bows/BowEmpty") {
+	public static readonly SoundStyle EmptySound = new($"{nameof(TerrariaOverhaul)}/Assets/Sounds/Items/Bows/BowEmpty") {
 		Volume = 0.375f,
 		PitchVariance = 0.2f,
 		MaxInstances = 3,
@@ -57,26 +57,19 @@ public partial class Bow : ItemOverhaul
 		base.SetDefaults(item);
 
 //		if (item.UseSound == SoundID.Item5) {
-//			item.UseSound = BowFireSound;
+//			item.UseSound = FireSound;
 //		}
 
 		item.EnableComponent<ItemPowerAttacks>(c => {
-			c.ChargeLengthMultiplier = 1.5f;
+			c.ChargeLengthMultiplier = 1.5f; // x2.5
 			c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.5f;
 			c.CommonStatMultipliers.ProjectileKnockbackMultiplier = 1.5f;
 			c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;
 		});
 
 		if (!Main.dedServ) {
-			item.EnableComponent<ItemUseScreenShake>(c => {
-				c.ScreenShake = new ScreenShake(0.3f, 0.2f);
-			});
-
-			item.EnableComponent<ItemCrosshairController>();
-
 			item.EnableComponent<ItemPowerAttackSounds>(c => {
-				c.Sound = BowChargeSound;
-				c.CancelPlaybackOnEnd = true;
+				c.Sound = ChargeSound;
 			});
 		}
 	}

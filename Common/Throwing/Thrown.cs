@@ -61,9 +61,5 @@ public partial class Thrown : ItemOverhaul
 			}
 			c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;
 		});
-
-		if (!Main.dedServ) {
-			item.EnableComponent<ItemCrosshairController>();
-		}
 	}
 }

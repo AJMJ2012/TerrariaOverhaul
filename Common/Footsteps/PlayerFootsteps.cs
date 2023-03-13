@@ -17,7 +17,7 @@ public sealed class PlayerFootsteps : ModPlayer
 
 	public override void PostItemCheck()
 	{
-		if (Main.dedServ || !EnablePlayerFootsteps) {
+		if (Main.dedServ || !EnablePlayerFootsteps || ModLoader.HasMod("TerrariaAmbience")) {
 			return;
 		}
 

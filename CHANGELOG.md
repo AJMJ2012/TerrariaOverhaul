@@ -4,6 +4,7 @@
 | Version									| Release Date |
 | ----------------------------------------- | ------------ |
 | [Work In Progress](#work-in-progress)		| `TBA`        |
+| [5.0 BETA 12**C**](#50-beta-12c)			| `2023.03.11` |
 | [5.0 BETA 12**B**](#50-beta-12b)			| `2022.12.25` |
 | [5.0 BETA 12](#50-beta-12)				| `2022.12.24` |
 | [5.0 BETA 11**F**](#50-beta-11f)			| `2022.09.11` |
@@ -28,6 +29,13 @@
 
 # Work In Progress
 
+* Nothing yet *
+
+### Fixes
+- Fixed vanilla mining helmet light not appearing if `PlayerVisuals.EnableAimableFlashlights` is disabled.
+
+# 5.0 BETA 12C
+
 ### Changes
 - Reduced mages' Mana Absorption passive's max multiplier from 11.0 to 5.0, with its required speed reduced from 30.0 to 15.0. The reason for this is that 5.0 is usually the maximum multiplier that people could reach, and there's little need in suggesting that they try to go even faster.
 - Improved coloring of melee damage text and the Hack and Slash passive: removed green shades since people thought that they were sometimes healing enemies, widened white shades' range.
@@ -50,7 +58,7 @@
 
 ### Localization
 - Chinese - PR [#173](https://github.com/Mirsario/TerrariaOverhaul/pull/173) by **Cyrillia**.
-- Polish - PR [#141](https://github.com/Mirsario/TerrariaOverhaul/pull/172) by **J00niper**.
+- Polish - PR [#172](https://github.com/Mirsario/TerrariaOverhaul/pull/172) by **J00niper**.
 
 # 5.0 BETA 12B
 

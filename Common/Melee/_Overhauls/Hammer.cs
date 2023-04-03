@@ -7,6 +7,7 @@ using TerrariaOverhaul.Common.Charging;
 using TerrariaOverhaul.Core.Configuration;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
+using TerrariaOverhaul.Utilities;
 
 namespace TerrariaOverhaul.Common.Melee;
 
@@ -86,10 +87,15 @@ public class Hammer : ItemOverhaul
 			item.EnableComponent<ItemMeleePowerAttackEffects>();
 			item.EnableComponent<ItemPowerAttacks>(c => {
 				c.ChargeLengthMultiplier = 1.5f;
-				c.CommonStatMultipliers.MeleeRangeMultiplier = 1.5f;
-				c.CommonStatMultipliers.MeleeDamageMultiplier = c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.5f;
-				c.CommonStatMultipliers.MeleeKnockbackMultiplier = c.CommonStatMultipliers.ProjectileKnockbackMultiplier = 2.0f; // Even more knockback
-				c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;
+
+				var modifiers = new CommonStatModifiers();
+
+				modifiers.MeleeDamageMultiplier = modifiers.ProjectileDamageMultiplier = 1.5f;
+				modifiers.MeleeKnockbackMultiplier = modifiers.ProjectileKnockbackMultiplier = 2.0f; // Even more knockback
+				modifiers.MeleeRangeMultiplier = 1.5f;
+				modifiers.ProjectileSpeedMultiplier = 1.5f;
+
+				c.StatModifiers.Single = modifiers;
 			});
 
 			if (!Main.dedServ) {

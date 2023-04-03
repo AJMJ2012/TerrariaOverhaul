@@ -7,6 +7,7 @@ using TerrariaOverhaul.Common.Crosshairs;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
 using TerrariaOverhaul.Common.Charging;
+using TerrariaOverhaul.Utilities;
 // DA Addition
 namespace TerrariaOverhaul.Common.ModEntities.Items.Overhauls;
 
@@ -55,11 +56,13 @@ public partial class Thrown : ItemOverhaul
 
 		item.EnableComponent<ItemPowerAttacks>(c => {
 			c.ChargeLengthMultiplier = 1.5f;
+			var modifiers = new CommonStatModifiers();
 			if (projectile.aiStyle != ProjAIStyleID.GroundProjectile && projectile.aiStyle != ProjAIStyleID.Explosive) { // Don't power up grenades, spiky balls, and similar
-				c.CommonStatMultipliers.ProjectileDamageMultiplier = 1.5f;
-				c.CommonStatMultipliers.ProjectileKnockbackMultiplier = 1.5f;
+				modifiers.ProjectileDamageMultiplier = 1.5f;
+				modifiers.ProjectileKnockbackMultiplier = 1.5f;
 			}
-			c.CommonStatMultipliers.ProjectileSpeedMultiplier = 1.5f;
+			modifiers.ProjectileSpeedMultiplier = 1.5f;
+			c.StatModifiers.Single = modifiers;
 		});
 	}
 }

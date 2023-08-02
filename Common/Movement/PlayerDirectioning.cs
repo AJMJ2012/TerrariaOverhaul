@@ -1,14 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TerrariaOverhaul.Common.Hooks.Items;
 using TerrariaOverhaul.Core.Networking;
 using TerrariaOverhaul.Utilities;
-
+// DA Edit
 namespace TerrariaOverhaul.Common.Movement;
 
 public sealed class PlayerDirectioning : ModPlayer
@@ -84,6 +86,7 @@ public sealed class PlayerDirectioning : ModPlayer
 
 	public Vector2 MouseWorld { get; private set; }
 	public Vector2 LookPosition { get; private set; }
+	public bool forcedLooking = false;
 
 	public override void Load()
 	{
@@ -142,11 +145,30 @@ public sealed class PlayerDirectioning : ModPlayer
 
 			return;
 		}
+		forcedLooking = false;
 
 		if (Player.IsLocal() && Main.hasFocus) {
 			MouseWorld = Main.MouseWorld;
-			LookPosition = MouseWorld;
 
+			if (Main.SmartCursorIsUsed) {
+				Point smartCursor = new Point(Main.SmartCursorX, Main.SmartCursorY);
+				if (Main.SmartCursorShowing) {
+					MouseWorld = (smartCursor.ToVector2() * 16f) + new Vector2(8, 8) + (Player.velocity * 2f);
+					forcedLooking = true;
+				}
+				//Point smartInteract = new Point(Main.SmartInteractX, Main.SmartInteractY);
+				//if (smartInteract.X > 0 && smartInteract.Y > 0) {
+				//	MouseWorld = (smartInteract.ToVector2() * 16f) + new Vector2(8, 8) + (Player.velocity * 2f);
+				//	forcedLooking = true;
+				//}
+			}
+			bool canLockOn = (bool?)typeof(LockOnHelper).GetField("_canLockOn", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null) ?? false;
+			if (canLockOn && LockOnHelper.AimedTarget != null) {
+				MouseWorld = LockOnHelper.AimedTarget.position;
+				forcedLooking = true;
+			}
+
+			LookPosition = MouseWorld;
 			if (lookPositionOverride.AppliesToPlayer(Player)) {
 				LookPosition = lookPositionOverride.Value;
 			}
@@ -166,7 +188,7 @@ public sealed class PlayerDirectioning : ModPlayer
 			return;
 		}
 
-		if (!Player.pulley && (!Player.mount.Active || Player.mount.AllowDirectionChange) && (Player.itemAnimation <= 1 || ICanTurnDuringItemUse.Invoke(Player.HeldItem, Player))) {
+		if (!Player.pulley && (!Player.mount.Active || Player.mount.AllowDirectionChange) && (Player.itemAnimation <= 1 || ICanTurnDuringItemUse.Invoke(Player.HeldItem, Player) || forcedLooking)) {
 			if (directionOverride.AppliesToPlayer(Player)) {
 				Player.direction = (int)directionOverride.Value;
 			} else {

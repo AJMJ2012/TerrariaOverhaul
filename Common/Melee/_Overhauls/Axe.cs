@@ -92,7 +92,7 @@ public class Axe : ItemOverhaul
 
 				var statsModifiers = new CommonStatModifiers();
 
-				statsModifiers.MeleeDamageMultiplier = statsModifiers.ProjectileDamageMultiplier = 1.5f;
+				statsModifiers.MeleeDamageMultiplier = statsModifiers.ProjectileDamageMultiplier = 2f;
 				statsModifiers.MeleeKnockbackMultiplier = statsModifiers.ProjectileKnockbackMultiplier = 1.5f;
 				statsModifiers.MeleeRangeMultiplier = 1.5f;
 				statsModifiers.ProjectileSpeedMultiplier = 1.5f;

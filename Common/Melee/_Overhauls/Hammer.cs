@@ -90,7 +90,7 @@ public class Hammer : ItemOverhaul
 
 				var modifiers = new CommonStatModifiers();
 
-				modifiers.MeleeDamageMultiplier = modifiers.ProjectileDamageMultiplier = 1.5f;
+				modifiers.MeleeDamageMultiplier = modifiers.ProjectileDamageMultiplier = 2f;
 				modifiers.MeleeKnockbackMultiplier = modifiers.ProjectileKnockbackMultiplier = 2.0f; // Even more knockback
 				modifiers.MeleeRangeMultiplier = 1.5f;
 				modifiers.ProjectileSpeedMultiplier = 1.5f;

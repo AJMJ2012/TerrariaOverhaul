@@ -33,7 +33,7 @@ public class SlashPlayerDrawLayer : PlayerDrawLayer
 
 	protected override void Draw(ref PlayerDrawSet drawInfo)
 	{
-		if (!EnableMeleeSlashVisualization || ModLoader.HasMod("MeleeWeaponEffects") || ModLoader.HasMod("WeaponDisplay")) {
+		if (!EnableMeleeSlashVisualization || ModLoader.HasMod("MeleeWeaponEffects") || ModLoader.HasMod("WeaponDisplay") || ModLoader.HasMod("SwingEffects")) {
 			return;
 		}
 

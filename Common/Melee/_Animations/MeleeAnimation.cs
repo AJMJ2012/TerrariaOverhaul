@@ -19,7 +19,7 @@ public abstract class MeleeAnimation : ItemComponent
 
 	public override void UseItemFrame(Item item, Player player)
 	{
-		if (!Enabled || !EnableImprovedMeleeAnimations || ModLoader.HasMod("MeleeWeaponEffects") || ModLoader.HasMod("WeaponDisplay")) {
+		if (!Enabled || !EnableImprovedMeleeAnimations || ModLoader.HasMod("MeleeWeaponEffects") || ModLoader.HasMod("WeaponDisplay") || ModLoader.HasMod("SwingEffects")) {
 			return;
 		}
 

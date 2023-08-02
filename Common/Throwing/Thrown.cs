@@ -58,7 +58,7 @@ public partial class Thrown : ItemOverhaul
 			c.ChargeLengthMultiplier = 1.5f;
 			var modifiers = new CommonStatModifiers();
 			if (projectile.aiStyle != ProjAIStyleID.GroundProjectile && projectile.aiStyle != ProjAIStyleID.Explosive) { // Don't power up grenades, spiky balls, and similar
-				modifiers.ProjectileDamageMultiplier = 1.5f;
+				modifiers.ProjectileDamageMultiplier = 2f;
 				modifiers.ProjectileKnockbackMultiplier = 1.5f;
 			}
 			modifiers.ProjectileSpeedMultiplier = 1.5f;

@@ -99,7 +99,7 @@ public partial class Broadsword : ItemOverhaul, IModifyItemNPCHitSound
 
 				var modifiers = new CommonStatModifiers();
 
-				modifiers.MeleeDamageMultiplier = modifiers.ProjectileDamageMultiplier = 1.5f;
+				modifiers.MeleeDamageMultiplier = modifiers.ProjectileDamageMultiplier = 2f;
 				modifiers.MeleeKnockbackMultiplier = modifiers.ProjectileKnockbackMultiplier = 1.5f;
 				modifiers.MeleeRangeMultiplier = 1.5f;
 				modifiers.ProjectileSpeedMultiplier = 1.5f;

@@ -70,7 +70,7 @@ public partial class MagicWeapon : ItemOverhaul
 
 			var modifiers = new CommonStatModifiers();
 
-			modifiers.ProjectileDamageMultiplier = modifiers.MeleeDamageMultiplier = 1.5f;
+			modifiers.ProjectileDamageMultiplier = modifiers.MeleeDamageMultiplier = 2f;
 			modifiers.ProjectileKnockbackMultiplier = modifiers.MeleeKnockbackMultiplier = 1.5f;
 			modifiers.ProjectileSpeedMultiplier = 1.5f;
 

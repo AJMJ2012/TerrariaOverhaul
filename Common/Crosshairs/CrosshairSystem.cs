@@ -130,6 +130,10 @@ public sealed class CrosshairSystem : ModSystem
 			OuterColor = Main.LocalPlayer.hasRainbowCursor ? Main.hslToRgb(Main.GlobalTimeWrappedHourly * 0.25f % 1f, 1f, 0.5f) : Main.MouseBorderColor,
 		};
 
+		if (Main.SmartCursorIsUsed) {
+			result.Rotation += (float)(Math.PI / 4f);
+		}
+
 		var currentTime = TimeSystem.CurrentTimeSpan;
 		float currentTimeInSeconds = (float)TimeSystem.CurrentTimeSpan.TotalSeconds;
 
@@ -209,7 +213,7 @@ public sealed class CrosshairSystem : ModSystem
 					var frame = crosshairBaseFrame.With((byte)(x + (inner ? 0 : 2)), y);
 					var srcRect = frame.GetSourceRectangle(texture);
 					var dstRect = new Rectangle(Main.mouseX + (int)vecOffset.X, Main.mouseY + (int)vecOffset.Y, srcRect.Width, srcRect.Height);
-					var origin = new Vector2((1 - x) * srcRect.Width, (1 - y) * srcRect.Height);
+					var origin = new Vector2((1 - x) * srcRect.Width, (1 - y) * srcRect.Height) + new Vector2(1f, 1f);
 					var color = inner ? renderData.InnerColor : renderData.OuterColor;
 
 					Main.spriteBatch.Draw(texture, dstRect, srcRect, color, renderData.Rotation, origin, SpriteEffects.None, 0f);

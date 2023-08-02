@@ -24,9 +24,9 @@ public partial class Bow : ItemOverhaul
 	{
 		base.SetDefaults(item);
 
-		if (item.UseSound == SoundID.Item5) {
-			item.UseSound = ArcheryWeapons.FireSound;
-		}
+		//if (item.UseSound == SoundID.Item5) {
+		//	item.UseSound = ArcheryWeapons.FireSound;
+		//}
 
 		item.EnableComponent<ItemPowerAttackHover>(c => {
 			c.ActivationVelocityRange = new Vector4(

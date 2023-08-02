@@ -7,7 +7,9 @@ using Terraria.ModLoader;
 using TerrariaOverhaul.Common.BloodAndGore;
 using TerrariaOverhaul.Common.Camera;
 using TerrariaOverhaul.Common.Charging;
+using TerrariaOverhaul.Common.Damage;
 using TerrariaOverhaul.Common.Hooks.Items;
+using TerrariaOverhaul.Common.Interaction;
 using TerrariaOverhaul.Core.Configuration;
 using TerrariaOverhaul.Core.ItemComponents;
 using TerrariaOverhaul.Core.ItemOverhauls;
@@ -79,7 +81,6 @@ public partial class Broadsword : ItemOverhaul, IModifyItemNPCHitSound
 		}
 
 		item.EnableComponent<ItemMeleeGoreInteraction>();
-		item.EnableComponent<ItemMeleeNpcStuns>();
 		item.EnableComponent<ItemMeleeCooldownReplacement>();
 		item.EnableComponent<ItemMeleeAttackAiming>();
 		item.EnableComponent<ItemVelocityBasedDamage>();
